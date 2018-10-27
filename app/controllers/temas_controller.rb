@@ -1,6 +1,13 @@
 class TemasController < ApplicationController
   before_action :set_tema, only: [:show, :edit, :update, :destroy]
 
+
+  def upvote
+    @temas = Tema.find(params[:id])
+    @temas.votes.create
+    redirect_to(temas_path)
+  end
+
   # GET /temas
   # GET /temas.json
   def index

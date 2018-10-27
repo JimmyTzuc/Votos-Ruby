@@ -15,7 +15,9 @@
     <% @temas.each do |tema| %>
       <tr>
         <td><%= tema.titulo %></td>
-        <td><%= tema.descripcion %></td>
+        <td><%= tema.descripcion  %></td>
+        <td><%= pluralize(tema.votes.count, "voto") %></td>
+        <td><%= button_to '+1', upvote_tema_path(tema), method: :post %></td>
         <td><%= link_to 'Show', tema %></td>
         <td><%= link_to 'Edit', edit_tema_path(tema) %></td>
         <td><%= link_to 'Destroy', tema, method: :delete, data: { confirm: 'Are you sure?' } %></td>
