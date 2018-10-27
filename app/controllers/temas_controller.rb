@@ -8,6 +8,12 @@ class TemasController < ApplicationController
     redirect_to(temas_path)
   end
 
+  def downvote
+    @temas = Tema.find(params[:id])
+    @temas.votes.first.destroy
+    redirect_to(temas_path)
+  end
+
   # GET /temas
   # GET /temas.json
   def index
@@ -61,6 +67,7 @@ class TemasController < ApplicationController
   # DELETE /temas/1
   # DELETE /temas/1.json
   def destroy
+
     @tema.destroy
     respond_to do |format|
       format.html { redirect_to temas_url, notice: 'Tema was successfully destroyed.' }

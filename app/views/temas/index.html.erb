@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Temas</h1>
-
+<div>
 <table>
   <thead>
     <tr>
@@ -15,7 +15,8 @@
       <tr>
         <td><%= link_to tema.titulo, tema %></td>
         <td><%= pluralize(tema.votes.count, "voto") %></td>
-        <td><%= button_to '+1', upvote_tema_path(tema), method: :post %></td>
+        <td class="boton"><%= button_to '+1', upvote_tema_path(tema), method: :post %></td>
+        <td class="boton"><%= button_to '-1', downvote_tema_path(tema), method: :post %></td>
         <td><%= link_to 'Eliminar', tema, method: :delete, data: { confirm: 'Seguro?' } %></td>
       </tr>
     <% end %>
@@ -25,3 +26,5 @@
 <br>
 
 <%= link_to 'Nuevo Tema', new_tema_path %>
+</div>
+
